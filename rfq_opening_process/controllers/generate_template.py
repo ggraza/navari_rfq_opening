@@ -152,6 +152,5 @@ def generate_template(quotation, note_type, date):
         rendered_content = frappe.render_template(
             f"{template_path}/rfq_committee_register.html", context=context
         )
-        print("CONTEXT", context)
 
     frappe.response["message"] = rendered_content
