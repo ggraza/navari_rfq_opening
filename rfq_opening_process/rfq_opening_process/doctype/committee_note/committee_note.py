@@ -5,5 +5,5 @@
 from frappe.model.document import Document
 
 
-class CommitteeNotes(Document):
+class CommitteeNote(Document):
 	pass

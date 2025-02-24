@@ -40,7 +40,10 @@ required_apps = ["frappe/erpnext"]
 doctype_js = {
     "ToDo": "public/js/todo.js",
 }
-# doctype_list_js = {"doctype" : "public/js/doctype_list.js"}
+
+doctype_list_js = {
+    "Committee Note": "rfq_opening_process/client_scripts/committee_note_list.js"
+}
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
 # doctype_calendar_js = {"doctype" : "public/js/doctype_calendar.js"}
 

@@ -13,6 +13,10 @@
   "minimum_no_of_members_needed_to_open",
   "column_break_3",
   "disabled",
+  "applicable_templates_section",
+  "opening_minutes",
+  "committee_register",
+  "evaluation_minutes",
   "description_section",
   "description",
   "section_break_4",
@@ -68,15 +72,37 @@
    "label": "Committee Members",
    "options": "Committee Member",
    "reqd": 1
+  },
+  {
+   "fieldname": "applicable_templates_section",
+   "fieldtype": "Section Break",
+   "label": "Applicable Templates"
+  },
+  {
+   "default": "1",
+   "fieldname": "opening_minutes",
+   "fieldtype": "Check",
+   "label": "Opening Minutes"
+  },
+  {
+   "default": "1",
+   "fieldname": "committee_register",
+   "fieldtype": "Check",
+   "label": "Committee Register"
+  },
+  {
+   "default": "1",
+   "fieldname": "evaluation_minutes",
+   "fieldtype": "Check",
+   "label": "Evaluation Minutes"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-11-03 13:42:53.133032",
+ "modified": "2025-02-24 16:04:05.842897",
  "modified_by": "Administrator",
  "module": "RFQ Opening Process",
  "name": "Committee",
- "name_case": "Title Case",
  "naming_rule": "By fieldname",
  "owner": "Administrator",
  "permissions": [
