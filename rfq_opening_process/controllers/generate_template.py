@@ -80,32 +80,30 @@ def get_purchase_intent_note(rfq):
 
 
 @frappe.whitelist()
-def generate_template(quotation, note_type, date):
+def generate_template(quotation, committee, note_type, date, evaluation_committee=None):
     supplier_quotations = get_supplier_quotations(quotation)
 
     rfq_doc = frappe.get_doc("Request for Quotation", quotation)
     committee_members = (
         frappe.db.get_all(
             "Committee Member",
-            filters={"parent": rfq_doc.committee},
-            fields=["name"],
+            filters={"parent": committee},
+            fields=["name", "full_name", "user_id"],
         )
-        if rfq_doc.committee
+        if committee
         else None
     )
 
-    committee_data = []
-    if committee_members:
-        for member in committee_members:
-            member_data = frappe.db.get_value(
-                "Committee Member",
-                filters={"name": member.name},
-                fieldname=["full_name", "name", "user_id"],
-                as_dict=1,
-            )
-            committee_data.append(member_data)
-
     context = defaultdict()
+
+    evaluation_committee_members = frappe.db.get_all(
+        "Committee Member",
+        filters={"parent": evaluation_committee},
+        fields=["name", "full_name", "user_id"],
+    )
+    context["evaluation_committee"] = (
+        evaluation_committee_members if evaluation_committee_members else None
+    )
 
     date_obj = datetime.strptime(date, "%Y-%m-%d")
     new_date = date_obj.strftime("%d/%m/%Y")
@@ -121,7 +119,7 @@ def generate_template(quotation, note_type, date):
     context["closing_date"] = format_date_with_ordinal(
         datetime.strptime(rfq_doc.get_formatted("closing_date"), "%d-%m-%Y")
     )
-    context["committee_members"] = committee_data
+    context["committee_members"] = committee_members
     context["supplier_quotations"] = (
         supplier_quotations if supplier_quotations else None
     )

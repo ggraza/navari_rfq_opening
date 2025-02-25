@@ -43,9 +43,9 @@
   <div>
     <h3>4. EVALUATION COMMITTEE</h3>
     <p>The Managing Director appointed the following Officers to undertake the Evaluation of the quotations received and submit a recommendation for consideration of award of the contract:-</p>
-    {% if committee_members %}
+    {% if evaluation_committee %}
       <ol>
-        {% for member in committee_members %}
+        {% for member in evaluation_committee %}
         <li>{{ member.get("full_name") }}</li>
         {% endfor %}
       </ol>
@@ -67,7 +67,7 @@
     <h3>8. RECOMMENDATION</h3>
     <p>Pursuant to Section 80(4) of the public procurement and asset disposal act 2015, the Evaluation Committee thus recommends the award to M/S Longrock Tours and travel Ltd being the lowest bidder as highlighted in the table above.</p>
 
-    {% if committee_members %}
+    {% if evaluation_committee %}
   <table class="table table-bordered table-hover">
     <thead>
       <tr>
@@ -78,7 +78,7 @@
       </tr>
     </thead>
     <tbody>
-      {% for idx, member in enumerate(committee_members) %}
+      {% for idx, member in enumerate(evaluation_committee) %}
       {% set user_signature = frappe.db.get_value("User", {"name": member.user_id }, ["signature"]) %}
       <tr>
         <td>{{ idx + 1 }}</td>
@@ -86,9 +86,7 @@
         {% if user_signature%}
           <td style="width: 30%"><img width="100" height="25" src="{{ user_signature }}" /></td>
         {% else %}
-          {% set names = member.full_name.split(" ") %}
-          {% set member_initials =  "".join([names[0][0], names[1][0]]) %}
-        <td style="width: 30%">{{ member_initials }}</td>
+          <td style="width: 30%"></td>
         {% endif %}
         <td style="width: 30%">{{ opening_date }}</td>
       </tr>

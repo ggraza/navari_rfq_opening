@@ -12,18 +12,18 @@ EXTRA_TEST_RECORD_DEPENDENCIES = []  # eg. ["User"]
 IGNORE_TEST_RECORD_DEPENDENCIES = []  # eg. ["User"]
 
 
-class UnitTestCommitteeNotes(UnitTestCase):
+class UnitTestCommitteeNote(UnitTestCase):
 	"""
-	Unit tests for CommitteeNotes.
+	Unit tests for CommitteeNote.
 	Use this class for testing individual functions and methods.
 	"""
 
 	pass
 
 
-class IntegrationTestCommitteeNotes(IntegrationTestCase):
+class IntegrationTestCommitteeNote(IntegrationTestCase):
 	"""
-	Integration tests for CommitteeNotes.
+	Integration tests for CommitteeNote.
 	Use this class for testing interactions between multiple components.
 	"""
 

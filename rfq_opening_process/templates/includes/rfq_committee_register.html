@@ -22,9 +22,7 @@
         {% if user_signature%}
           <td style="width: 30%"><img width="100" height="25" src="{{ user_signature }}" /></td>
         {% else %}
-          {% set names = member.full_name.split(" ") %}
-          {% set member_initials =  "".join([names[0][0], names[1][0]]) %}
-        <td style="width: 30%">{{ member_initials }}</td>
+          <td style="width: 30%"></td>
         {% endif %}
         <td style="width: 30%">{{ date }}</td>
       </tr>

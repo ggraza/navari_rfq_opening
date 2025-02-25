@@ -10,8 +10,10 @@
   "naming_series",
   "quotation",
   "posting_date",
+  "committee",
   "column_break_bgma",
   "note_type",
+  "evaluation_committee",
   "section_break_eecl",
   "generated_content",
   "amended_from"
@@ -69,19 +71,37 @@
    "fieldtype": "Link",
    "label": "Amended From",
    "no_copy": 1,
-   "options": "Committee Notes",
+   "options": "Committee Note",
    "print_hide": 1,
    "read_only": 1,
    "search_index": 1
+  },
+  {
+   "fetch_from": "quotation.committee",
+   "fieldname": "committee",
+   "fieldtype": "Link",
+   "label": "Committee",
+   "options": "Committee",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "depends_on": "eval:doc.note_type && doc.note_type===\"Evaluation Minutes\"",
+   "fieldname": "evaluation_committee",
+   "fieldtype": "Link",
+   "label": "Evaluation Committee",
+   "link_filters": "[[\"Committee\",\"evaluation_minutes\",\"=\",1]]",
+   "mandatory_depends_on": "eval:doc.note_type===\"Evaluation Minutes\"",
+   "options": "Committee"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2025-01-22 16:41:48.636708",
+ "modified": "2025-02-24 17:37:33.828658",
  "modified_by": "Administrator",
  "module": "RFQ Opening Process",
- "name": "Committee Notes",
+ "name": "Committee Note",
  "naming_rule": "Expression",
  "owner": "Administrator",
  "permissions": [
