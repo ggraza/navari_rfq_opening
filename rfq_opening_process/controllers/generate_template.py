@@ -96,14 +96,15 @@ def generate_template(quotation, committee, note_type, date, evaluation_committe
 
     context = defaultdict()
 
-    evaluation_committee_members = frappe.db.get_all(
-        "Committee Member",
-        filters={"parent": evaluation_committee},
-        fields=["name", "full_name", "user_id"],
-    )
-    context["evaluation_committee"] = (
-        evaluation_committee_members if evaluation_committee_members else None
-    )
+    if evaluation_committee:
+        evaluation_committee_members = frappe.db.get_all(
+            "Committee Member",
+            filters={"parent": evaluation_committee},
+            fields=["name", "full_name", "user_id"],
+        )
+        context["evaluation_committee"] = (
+            evaluation_committee_members if evaluation_committee_members else None
+        )
 
     date_obj = datetime.strptime(date, "%Y-%m-%d")
     new_date = date_obj.strftime("%d/%m/%Y")

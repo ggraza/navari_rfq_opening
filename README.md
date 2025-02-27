@@ -1,35 +1,96 @@
-## ERPNext Extensions on Request for Quotation and Supplier Quotation to include Committee Bid Openings
+# ERPNext Extensions on Request for Quotation and Supplier Quotation to include Committee Bid Openings
+
+## Overview
+
+This app extends the standard Request for Quotation (RFQ) functionality in ERPNext by introducing enhancements to streamline the procurement process. It enables committee bid openings and the creation of committee notes based on predefined templates.
 
 ## Features
 
-#### Committee
+### 1. Custom Fields in Request for Quotation(RFQ)
 
-By using the Committee DocType, the system allows a user to set up a quote/bid opening committee and its members, who will open quotes or bids once the opening date and time are due. It can also be used to set up the Evaluation Committee for Supplier Quotations.
-![rfq_opening_committee](https://github.com/user-attachments/assets/5cd8574a-6044-436a-a19a-19b361060b95)
+The following fields have been introduced to the RFQ DocType.
 
-![evaluation_committee](https://github.com/user-attachments/assets/14d7a4f8-2ccf-4bf2-883d-5440c8ab4368)
+| Field Name              | Type | Description                       |
+| :---------------------- | :--- | :-------------------------------- |
+| committee               | Link | Quotation opening committee       |
+| minimum_expected_quotes | Date | Minimum number of expected quotes |
+| closing_time            | Time | Closing time for the RFQ          |
+| closing_date            | Date | Closing date for the RFQ          |
 
+### 2. RFQ Opening Settings
 
-#### Committee Note
+This DocType contains global settings for RFQ and includes the following check fields.
 
-The system allows the generation of Committee Notes using predefined templates. The user can choose any template from the following options: Opening Minutes, Committee Register, and Evaluation Minutes. The templates are editable, allowing flexibility.
-![committee_note](https://github.com/user-attachments/assets/83abdc54-9570-42c3-a98d-6fbf87e0e8f7)
+| Field Name                                     | Type    | Description                                                         |
+| :--------------------------------------------- | :------ | :------------------------------------------------------------------ |
+| allow_multiple_supplier_quotations_from_portal | Check   | Checked if suppliers are allowed to provide multiple quotations     |
+| skip_supplier_quotation_opening_by_committee   | Checked | Checked if you want to skip supplier quotation opening by committee |
+| ignore_default_buying_price_list_validation    | Attach  | Checked if you want to ignore default buying price list validation  |
 
-## Process Flow
+### 3. New DocType: Committee
 
-**Committee:**
-Set up committees for both quote/bid opening and evaluation.
+This DocType allows the setup of both Quotation Opening and Evaluation Committees. It includes the following fields:
 
-**Setting Closing Date, and quote opening committee on Request for Quotation**
-![rfq2](https://github.com/user-attachments/assets/b67ec38b-240e-4e4b-b972-8e61c908cc57)
+| Field Name                           | Type        | Description                                               |
+| :----------------------------------- | :---------- | :-------------------------------------------------------- |
+| committee                            | Date        | Name of committee                                         |
+| disabled                             | Check       | Checked if the committee is disabled                      |
+| opening_minutes                      | Check       | Checked if committee is applicable for Opening Minutes    |
+| committee_register                   | Check       | Checked if committee is applicable for Committee Register |
+| evaluation_minutes                   | Time        | Checked if committee is applicable for Evaluation Minutes |
+| minimum_no_of_members_needed_to_open | Int         | Minimum number of members needed to open a quote          |
+| description                          | Text Editor | Description of the committee                              |
+| committee_members                    | Table       | Table for the committee members                           |
 
-**Supplier Quotations Opening:**
-At the time RFQs are being sent to suppliers, a ToDo record is created for each committee member, who will access it on the opening date and time, and open the quotes submitted against the RFQ. Supplier quotations are only accessible, after they have been opened by all the comittee members set for the RFQ.
+### 4. Committee Member
 
-**Committee Note:**
-After opening the quotes, the desired committee note can be created.
+This is a child table of the Committee DocType that stores the committee members. It includes the following fields:
 
-### Installation
+| Field Name | Type      | Description           |
+| :--------- | :-------- | :-------------------- |
+| user_id    | Link      | Link to User          |
+| full_name  | Read Only | Full name of the User |
+| signature  | Attach    | signature of the User |
+
+### 5. Committee Note
+
+This DocType allows the creation of Committee Notes after the Quotation Opening Committee has opened the quotations. It includes the following fields.
+
+| Field Name           | Type        | Description                                               |
+| :------------------- | :---------- | :-------------------------------------------------------- |
+| series               | Select      | Naming series for the document                            |
+| quotation            | Link        | Quotation for which you want to create the committee note |
+| date                 | Date        | Date of the committee note                                |
+| committee            | Link        | Committee picked on the RFQ                               |
+| note_type            | Select      | Select field for the committee note template              |
+| evaluation_committee | Link        | Evaluation Committee for the quotations                   |
+| generated_content    | Text Editor | Editable content generated from templates                 |
+| committee_members    | Table       | Table for the committee members                           |
+
+# Configuration
+
+- Navigate to **RFQ Opening Settings** and configure the necessary parameters.
+- Set up the **Quotation Opening** and **Evaluation** committees under the Committee DocType, and select the templates to which the committees apply by ticking the necessary checkbox.
+
+# Usage
+
+### Create an RFQ
+
+Go to **Request for Quotation** and create a new RFQ. Select the Quotation Opening Committee, specify the closing date, closing time, and minimum expected quotes. Add the suppliers who will receive the RFQ, include the items, then save and submit. When RFQs are sent to suppliers, a ToDo record is created for each committee member. On the opening date and time, committee members can access their ToDo records and open the submitted quotes against the RFQ.
+
+### Supplier Quotations Opening
+
+Once the closing date and time for the RFQ are reached, committee members can access the RFQ and open the submitted quotes. Supplier quotations become accessible only after the minimum required number of members has opened them, as set for the RFQ.
+
+### Create Committee Note
+
+Three types of committee notes can be created from predefined templates:
+
+- **Opening Minutes**: Records of the quotation opening committee's proceedings.
+- **Committee Register**: A register of members present during the evaluation.
+- **Evaluation Minutes**: Minutes documenting the evaluation of supplier quotations.
+
+# Installation
 
 Using bench, [install ERPNext](https://github.com/frappe/bench#installation) as mentioned here.
 
@@ -45,6 +106,10 @@ After that, you can install rfq_opening_process app on required site by running
 $ bench --site [site.name] install-app rfq_opening_process
 ```
 
-#### License
+# License
 
 GNU General Public License (v3)
+
+# Contact
+
+For inquiries or support, please contact us at [support@navari.co.ke]

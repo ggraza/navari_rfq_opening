@@ -9,14 +9,17 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
+  "applicable_templates_section",
+  "opening_minutes",
+  "column_break_bstn",
+  "committee_register",
+  "column_break_rdww",
+  "evaluation_minutes",
+  "section_break_rio",
   "committee_name",
   "minimum_no_of_members_needed_to_open",
   "column_break_3",
   "disabled",
-  "applicable_templates_section",
-  "opening_minutes",
-  "committee_register",
-  "evaluation_minutes",
   "description_section",
   "description",
   "section_break_4",
@@ -95,11 +98,25 @@
    "fieldname": "evaluation_minutes",
    "fieldtype": "Check",
    "label": "Evaluation Minutes"
+  },
+  {
+   "fieldname": "column_break_bstn",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_rdww",
+   "fieldtype": "Column Break"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "section_break_rio",
+   "fieldtype": "Section Break",
+   "label": "Committee Settings"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-02-24 16:04:05.842897",
+ "modified": "2025-02-26 13:02:39.353198",
  "modified_by": "Administrator",
  "module": "RFQ Opening Process",
  "name": "Committee",

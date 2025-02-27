@@ -86,7 +86,7 @@
    "reqd": 1
   },
   {
-   "depends_on": "eval:doc.note_type && doc.note_type===\"Evaluation Minutes\"",
+   "depends_on": "eval:doc.quotation && doc.note_type && doc.note_type===\"Evaluation Minutes\"",
    "fieldname": "evaluation_committee",
    "fieldtype": "Link",
    "label": "Evaluation Committee",
@@ -98,7 +98,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2025-02-24 17:37:33.828658",
+ "modified": "2025-02-26 15:48:26.517557",
  "modified_by": "Administrator",
  "module": "RFQ Opening Process",
  "name": "Committee Note",
