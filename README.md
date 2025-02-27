@@ -70,13 +70,23 @@ This DocType allows the creation of Committee Notes after the Quotation Opening 
 # Configuration
 
 - Navigate to **RFQ Opening Settings** and configure the necessary parameters.
+  
+  ![Screenshot from 2025-02-27 17-04-47](https://github.com/user-attachments/assets/15feb853-d37b-4f42-8f2e-befeb5438509)
+
 - Set up the **Quotation Opening** and **Evaluation** committees under the Committee DocType, and select the templates to which the committees apply by ticking the necessary checkbox.
+  #### Quotation Opening Committee
+  ![Screenshot from 2025-02-27 17-02-40](https://github.com/user-attachments/assets/e7242579-639b-4f9c-a336-fe329e15ff06)
+
+  #### Evaluation Committee
+  ![Screenshot from 2025-02-27 17-03-16](https://github.com/user-attachments/assets/6795f316-4b4b-46e1-a248-e758b7c6e8db)
 
 # Usage
 
 ### Create an RFQ
 
 Go to **Request for Quotation** and create a new RFQ. Select the Quotation Opening Committee, specify the closing date, closing time, and minimum expected quotes. Add the suppliers who will receive the RFQ, include the items, then save and submit. When RFQs are sent to suppliers, a ToDo record is created for each committee member. On the opening date and time, committee members can access their ToDo records and open the submitted quotes against the RFQ.
+
+![Screenshot from 2025-02-27 17-07-25](https://github.com/user-attachments/assets/00dfbfb4-beaa-4b22-852e-f2edb1ba0f6b)
 
 ### Supplier Quotations Opening
 
@@ -87,8 +97,17 @@ Once the closing date and time for the RFQ are reached, committee members can ac
 Three types of committee notes can be created from predefined templates:
 
 - **Opening Minutes**: Records of the quotation opening committee's proceedings.
+  
+  ![Screenshot from 2025-02-27 17-58-31](https://github.com/user-attachments/assets/8b46706a-e960-4987-9775-11edfa0fc65d)
+
 - **Committee Register**: A register of members present during the evaluation.
+  
+  ![Screenshot from 2025-02-27 17-59-15](https://github.com/user-attachments/assets/05aff445-ccd9-4cc3-9c2b-33878700d2b3)
+
 - **Evaluation Minutes**: Minutes documenting the evaluation of supplier quotations.
+  
+  ![Screenshot from 2025-02-27 17-57-33](https://github.com/user-attachments/assets/b518e1b4-c03f-4504-9aa3-7b4f9717a11f)
+
 
 # Installation
 
