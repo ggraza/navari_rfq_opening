@@ -13,7 +13,7 @@ The following fields have been introduced to the RFQ DocType.
 | Field Name              | Type | Description                       |
 | :---------------------- | :--- | :-------------------------------- |
 | committee               | Link | Quotation opening committee       |
-| minimum_expected_quotes | Date | Minimum number of expected quotes |
+| minimum_expected_quotes | Int  | Minimum number of expected quotes |
 | closing_time            | Time | Closing time for the RFQ          |
 | closing_date            | Date | Closing date for the RFQ          |
 
