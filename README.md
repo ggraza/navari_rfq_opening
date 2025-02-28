@@ -25,7 +25,7 @@ The following fields have been introduced to the Supplier Quotation DocType.
 | :---------------- | :----- | :----------------------------------------- |
 | submission_status | Select | Submission status for a supplier quotation |
 
-### 3. RFQ Opening Settings
+### 3. New DocType: RFQ Opening Settings
 
 This DocType contains global settings for RFQ and includes the following check fields.
 
@@ -50,7 +50,7 @@ This DocType allows the setup of both Quotation Opening and Evaluation Committee
 | description                          | Text Editor | Description of the committee                              |
 | committee_members                    | Table       | Table for the committee members                           |
 
-### 5. Committee Member
+### 5. New Child DocType: Committee Member
 
 This is a child DocType of the Committee DocType that stores the committee members. It includes the following fields:
 
@@ -60,7 +60,7 @@ This is a child DocType of the Committee DocType that stores the committee membe
 | full_name  | Read Only | Full name of the User |
 | signature  | Attach    | signature of the User |
 
-### 6. Committee Note
+### 6. New DocType: Committee Note
 
 This DocType allows the creation of Committee Notes after the Quotation Opening Committee has opened the quotations. It includes the following fields.
 
@@ -138,7 +138,7 @@ $ bench --site [site.name] install-app rfq_opening_process
 
 # Frappe Cloud Installation
 
-## Steps to Install an App
+## Installation Steps
 
 1. **Log in to Frappe Cloud**
 
