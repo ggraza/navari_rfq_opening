@@ -17,7 +17,7 @@
    "in_list_view": 1,
    "in_standard_filter": 1,
    "label": "User ID",
-   "options": "User",
+   "options": "User Signature",
    "reqd": 1,
    "search_index": 1
   },
@@ -30,6 +30,7 @@
    "label": "Full Name"
   },
   {
+   "fetch_from": "user_id.signature",
    "fieldname": "signature",
    "fieldtype": "Attach",
    "in_list_view": 1,
@@ -39,7 +40,7 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2025-08-09 10:49:22.892307",
+ "modified": "2025-08-09 12:12:38.312831",
  "modified_by": "Administrator",
  "module": "RFQ Opening Process",
  "name": "Committee Member",
