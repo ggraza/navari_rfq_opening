@@ -1,11 +1,10 @@
 from collections import defaultdict
 from datetime import datetime
 
+
 import frappe
 from frappe.query_builder import DocType
-
-
-from datetime import datetime
+from frappe.utils import getdate
 
 
 def format_date_with_ordinal(date_obj):
@@ -15,8 +14,7 @@ def format_date_with_ordinal(date_obj):
     else:
         suffix = {1: "st", 2: "nd", 3: "rd"}.get(day % 10, "th")
 
-    formatted_date = date_obj.strftime(f"%d{suffix} %B, %Y")
-    return formatted_date
+    return f"{day}{suffix} {date_obj.strftime('%B, %Y')}"
 
 
 def get_supplier_quotations(rfq):
@@ -114,9 +112,9 @@ def generate_template(quotation, committee, note_type, date, evaluation_committe
     context["transaction_date"] = format_date_with_ordinal(
         datetime.strptime(rfq_doc.get_formatted("transaction_date"), "%d-%m-%Y")
     )
-    context["opening_date"] = datetime.strptime(
-        rfq_doc.get_formatted("closing_date"), "%d-%m-%Y"
-    ).strftime("%d/%m/%Y")
+    context["opening_date"] = getdate(rfq_doc.get_formatted("closing_date")).strftime(
+        "%d/%m/%Y"
+    )
     context["closing_date"] = format_date_with_ordinal(
         datetime.strptime(rfq_doc.get_formatted("closing_date"), "%d-%m-%Y")
     )
