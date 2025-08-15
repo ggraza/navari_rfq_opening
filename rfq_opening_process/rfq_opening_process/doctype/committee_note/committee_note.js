@@ -3,6 +3,7 @@
 
 frappe.ui.form.on("Committee Note", {
   note_type(frm) {
+    frm.trigger("validateRFQ");
     frm.trigger("generateContent");
   },
   evaluation_committee(frm) {
@@ -29,6 +30,18 @@ frappe.ui.form.on("Committee Note", {
           }
         },
       });
+    }
+  },
+
+  validateRFQ(frm) {
+    if (!frm.doc.quotation) {
+      frappe.msgprint({
+        title: __("Error"),
+        indicator: "red",
+        message: __("Please select a Request for Quotation (RFQ)"),
+      });
+
+      return;
     }
   },
 });
